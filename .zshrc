@@ -93,3 +93,4 @@ export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
 source /usr/local/opt/autoenv/activate.sh
+source ~/.zsh/aliases.zsh
