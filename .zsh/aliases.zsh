@@ -1,6 +1,6 @@
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
-alias cb='git rev-parse --abbrev-ref HEAD'
+alias cb=git_current_branch
 
 gpo() {
     git push origin $(cb)
@@ -12,4 +12,15 @@ add-gh-remote() {
 
 gbsuto() {
     git branch --set-upstream-to=origin/$(cb)
+}
+
+killport() {
+    pid=`lsof -n -i:$1 | tail -1 | awk -F ' ' '{print $2}'`;
+
+    if ! test -z $pid; then
+        echo "Killing $pid on port $1";
+        kill $pid;
+    else
+        echo 'No process to kill';
+    fi
 }
