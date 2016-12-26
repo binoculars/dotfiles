@@ -120,3 +120,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 source /usr/local/opt/autoenv/activate.sh
 source ~/.zsh/aliases.zsh
+
+# added by travis gem
+[ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh

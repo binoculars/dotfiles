@@ -1,3 +1,5 @@
 .idea
 .env
 *.swp
+deploy_key*
+!deploy_key.enc
