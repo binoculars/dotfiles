@@ -1,0 +1,76 @@
+# ~/.tmuxinator/osf.yml
+
+name: osf
+startup_window: osf
+root: ~/Projects
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t osf
+
+windows:
+    - osf:
+        root: ~/Projects/cos/osf.io
+        layout: main-vertical
+        panes:
+            - command:
+                -
+            - mongo:
+                - workon osf
+                - invoke mongo -d
+            - mailserver:
+                - workon osf
+                - invoke mailserver
+            - rabbitmq:
+                - workon osf
+                - invoke rabbitmq
+            - celery:
+                - workon osf
+                - invoke celery_worker
+            - elasticsearch:
+                - workon osf
+                - invoke elasticsearch
+            - assets:
+                - workon osf
+                - invoke assets -dw
+            - server:
+                - workon osf
+                - sleep 10
+                - invoke server
+            - apiserver:
+                - workon osf
+                - sleep 10
+                - invoke apiserver
+            - fakecas:
+                - cd ~/Projects/cos/fakecas-bin
+                - ./fakecas*
+    - waterbutler:
+        root: ~/Projects/cos/waterbutler
+        layout: main-vertical
+        panes:
+            - command:
+                -
+            - waterbutler:
+                - workon waterbutler
+                - invoke server
+    - logs: tail -f log/development.log
