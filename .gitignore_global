@@ -3,3 +3,4 @@
 *.swp
 deploy_key*
 !deploy_key.enc
+npm-debug.log*
