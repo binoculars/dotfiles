@@ -2,11 +2,17 @@
 
 dotfiles=${0:A:h}
 
-ln -s $dotfiles/.bash_profile ~/.bash_profile
+dfiles=`ls -a $dotfiles | grep "^\\.[^.].\+[^(.git|.swp|.editorconfig)]$"`
+
+for file in $dfiles; do
+	if [[ ! -e "~/$file" ]]; then
+		ln -s "$dotfiles/$file" "~/$file"
+	fi
+done
 
 GH_USERNAME="binoculars"
 PROJECTS_DIR=~/Projects
-HOME=$PROJECTS_DIR/home
+HOME="$PROJECTS_DIR/home"
 
 repos=(
 	'aws-sigv4'
@@ -21,5 +27,7 @@ repos=(
 cd $HOME
 
 for repo in $repos; do
-	git clone git@github.com:${GH_USERNAME}/${repo}.git
+	if [[ ! -e "./$repo" ]]; then
+		git clone git@github.com:${GH_USERNAME}/${repo}.git
+	fi
 done

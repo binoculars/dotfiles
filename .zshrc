@@ -4,7 +4,7 @@ export dotfiles=${$(readlink ~/.zshrc):A:h}
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/barrettharber/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -54,27 +54,27 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    osx 
-    bower 
-    brew 
-    aws 
-    git-extras 
-    git-flow 
-    github 
-    gitignore 
-    node 
-    npm 
-    nvm 
-    python 
-    pip 
-    pep8 
-    screen 
-    sudo 
-    tmux 
-    tmuxinator 
-    docker 
-    go
+	git
+	osx
+	bower
+	brew
+	aws
+	git-extras
+	git-flow
+	github
+	gitignore
+	node
+	npm
+	nvm
+	python
+	pip
+	pep8
+	screen
+	sudo
+	tmux
+	tmuxinator
+	docker
+	go
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,7 +119,7 @@ export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
 source /usr/local/opt/autoenv/activate.sh
-source ~/.zsh/aliases.zsh
+source ~/.zsh/aliases.sh
 
 # added by travis gem
 [ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh
