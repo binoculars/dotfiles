@@ -1,18 +1,31 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 dotfiles=${0:A:h}
 
-dfiles=`ls -a $dotfiles | grep "^\\.[^.].\+[^(.git|.swp|.editorconfig)]$"`
+files=(
+	'.alacritty.yml'
+	'.bash_profile'
+	'.gitconfig'
+	'.gitignore_global'
+	'.tmux'
+	'.tmux.conf'
+	'.tmuxinator'
+	'.vim'
+	'.vimrc'
+	'.zsh'
+	'.zshrc'
+)
 
-for file in $dfiles; do
-	if [[ ! -e "~/$file" ]]; then
-		ln -s "$dotfiles/$file" "~/$file"
+for file in $files; do
+	if [[ ! -h "$HOME/$file" ]]; then
+		echo "Creating symlink for $file"
+		ln -s "$dotfiles/$file" "$HOME/$file"
 	fi
 done
 
 GH_USERNAME="binoculars"
 PROJECTS_DIR=~/Projects
-HOME="$PROJECTS_DIR/home"
+HOME_PROJECTS="$PROJECTS_DIR/home"
 
 repos=(
 	'aws-sigv4'
@@ -24,7 +37,7 @@ repos=(
 	'dashboard'
 )
 
-cd $HOME
+cd $HOME_PROJECTS
 
 for repo in $repos; do
 	if [[ ! -e "./$repo" ]]; then

@@ -41,3 +41,4 @@ brew install ffmpeg \
 
 brew install lynx nmap nvm tmux yarn tree macvim
 sudo gem install tmuxinator travis
+curl https://sh.rustup.rs -sSf | sh

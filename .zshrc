@@ -123,3 +123,4 @@ source ~/.zsh/aliases.sh
 
 # added by travis gem
 [ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh
+source $HOME/.cargo/env
