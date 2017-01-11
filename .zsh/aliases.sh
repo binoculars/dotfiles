@@ -7,8 +7,16 @@ gpo() {
 }
 
 add-gh-remote() {
-    git remote add $1 git@github.com:$1/$2.git
+    name=$2
+    
+    if test -z $name; then 
+        name="${$(basename `git remote get-url origin`)%.*}"   
+    fi
+
+    git remote add "$1" "git@github.com:$1/$name.git"
 }
+
+alias gar='add-gh-remote'
 
 gbsuto() {
     git branch --set-upstream-to=origin/$(cb)

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 brew install ffmpeg \
 	--with-chromaprint \
 	--with-fdk-aac \
@@ -40,5 +42,6 @@ brew install ffmpeg \
 	--with-zimg
 
 brew install lynx nmap nvm tmux yarn tree macvim
+brew cask install gimp
 sudo gem install tmuxinator travis
 curl https://sh.rustup.rs -sSf | sh
