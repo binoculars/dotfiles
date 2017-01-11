@@ -4,3 +4,5 @@
 deploy_key*
 !deploy_key.enc
 npm-debug.log*
+.python-version
+
