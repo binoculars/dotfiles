@@ -3,9 +3,10 @@
 dotfiles=${0:A:h}
 
 files=(
-	'.alacritty.yml'
+    '.alacritty.yml'
 	'.bash_profile'
-	'.gitconfig'
+	'.cos'
+    '.gitconfig'
 	'.gitignore_global'
 	'.tmux'
 	'.tmux.conf'
