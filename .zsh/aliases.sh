@@ -32,3 +32,8 @@ killport() {
         echo 'No process to kill';
     fi
 }
+
+alias d='docker'
+alias dcomp='docker-compose'
+alias dsync='docker-sync'
+

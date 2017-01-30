@@ -6,3 +6,4 @@ deploy_key*
 npm-debug.log*
 .python-version
 
+*override.yml
