@@ -3,7 +3,7 @@ alias gpud='git pull upstream develop'
 alias cb=git_current_branch
 
 gpo() {
-    git push origin $(cb)
+    git push --set-upstream origin $(cb)
 }
 
 add-gh-remote() {
@@ -36,4 +36,8 @@ killport() {
 alias d='docker'
 alias dcomp='docker-compose'
 alias dsync='docker-sync'
+alias cdh='cd ~'
+alias 'cd.'='cd $dotfiles'
+alias 'show-all-files'='defaults write com.apple.finder AppleShowAllFiles YES'
+alias 'hide-all-files'='defaults write com.apple.finder AppleShowAllFiles NO'
 
