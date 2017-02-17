@@ -4,3 +4,6 @@
 [user]
 	email = barrett.harber@gmail.com
 	name = Barrett K. Harber
+	signingkey = A9F3019F
+[commit]
+	gpgsign = true
