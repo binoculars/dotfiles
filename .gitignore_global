@@ -7,3 +7,4 @@ npm-debug.log*
 .python-version
 
 *override.yml
+.DS_Store

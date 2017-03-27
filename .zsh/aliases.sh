@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias cb=git_current_branch
@@ -41,3 +43,6 @@ alias 'cd.'='cd $dotfiles'
 alias 'show-all-files'='defaults write com.apple.finder AppleShowAllFiles YES'
 alias 'hide-all-files'='defaults write com.apple.finder AppleShowAllFiles NO'
 
+dcomp-ut() {
+	dcomp up -d $1 && dcomp logs -f --tail $2 $1
+}
