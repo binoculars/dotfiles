@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
-alias gpum='git pull upstream master'
-alias gpud='git pull upstream develop'
+alias resrc='source ~/.zshrc'
+alias glum='git pull upstream master'
+alias glud='git pull upstream develop'
 alias cb=git_current_branch
 
 gpo() {

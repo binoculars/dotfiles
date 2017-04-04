@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+bindkey \^U backward-kill-line
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
@@ -116,9 +117,10 @@ export NVM_DIR="$HOME/.nvm"
 # Virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
+export AUTOENV_ENV_FILENAME='.autoenv'
 source /usr/local/bin/virtualenvwrapper.sh
-
 source /usr/local/opt/autoenv/activate.sh
+
 source ~/.zsh/aliases.sh
 
 # added by travis gem
@@ -140,3 +142,4 @@ if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
 else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
+
