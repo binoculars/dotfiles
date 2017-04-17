@@ -143,3 +143,5 @@ else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 fi
 
+export PATH=$PATH:/usr/local/go/binexport GOPATH=$HOME/go
+export EDITOR='vim'
