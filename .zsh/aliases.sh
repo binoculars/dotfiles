@@ -49,3 +49,4 @@ dcomp-ut() {
 }
 
 alias av=ansible-vault
+alias tf=terraform

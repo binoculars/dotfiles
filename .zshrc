@@ -9,8 +9,9 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME="agnoster"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#POWERLEVEL9K_MODE='nerdfont-complete'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -111,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey \^U backward-kill-line
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+export DEFAULT_USER=${USER}
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 
@@ -118,7 +120,7 @@ export NVM_DIR="$HOME/.nvm"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export AUTOENV_ENV_FILENAME='.autoenv'
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 source /usr/local/opt/autoenv/activate.sh
 
 source ~/.zsh/aliases.sh
@@ -126,10 +128,11 @@ source ~/.zsh/aliases.sh
 # added by travis gem
 [ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh
 source $HOME/.cargo/env
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
+source <(kubectl completion zsh)
 
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -144,4 +147,16 @@ else
 fi
 
 export PATH=$PATH:/usr/local/go/binexport GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export EDITOR='vim'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/barrettharber/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/barrettharber/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc'; fi
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+

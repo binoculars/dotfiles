@@ -31,7 +31,7 @@ set visualbell
 set encoding=utf-8
 
 " Whitespace
-set wrap
+set nowrap
 set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=4
@@ -104,3 +104,9 @@ let g:solarized_termtrans=1
 colorscheme solarized
 map <TAB> <ESC>gt<CR> 
 map <S-TAB> <ESC>gT<CR>
+
+" Clipboard (Vim 7.4)
+" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
