@@ -1,5 +1,13 @@
 export dotfiles=${$(readlink ~/.zshrc):A:h}
-export LANG='en'
+
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -161,3 +169,4 @@ if [ -f '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc' ]; then sourc
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 
+export PATH="/usr/local/opt/openssl/bin:$PATH"
