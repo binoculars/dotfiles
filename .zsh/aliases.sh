@@ -2,12 +2,16 @@
 
 alias resrc='source ~/.zshrc'
 alias glum='git pull upstream master'
+alias gfum='git fetch upstream master'
 alias glud='git pull upstream develop'
+alias gfud='git fetch upstream develop'
 alias cb=git_current_branch
 
-gpo() {
-    git push --set-upstream origin $(cb)
+gpsu() {
+    git push --set-upstream ${1:-origin} $(cb)
 }
+
+alias gpo=gpsu
 
 add-gh-remote() {
     name=$2
@@ -41,6 +45,8 @@ alias dcomp='docker-compose'
 alias dsync='docker-sync'
 alias cdh='cd ~'
 alias 'cd.'='cd $dotfiles'
+alias 'cd-gt'='cd $(git rev-parse --show-toplevel)'
+alias 'cdgr'='cd-gt'
 alias 'show-all-files'='defaults write com.apple.finder AppleShowAllFiles YES'
 alias 'hide-all-files'='defaults write com.apple.finder AppleShowAllFiles NO'
 
@@ -50,3 +56,16 @@ dcomp-ut() {
 
 alias av=ansible-vault
 alias tf=terraform
+
+function sri() {
+  curl -s "${2}" | openssl dgst "-sha${1}" -binary | openssl base64 -A | (echo -n "sha${1}-" && cat) | pbcopy
+  echo Copied "SHA${1}" into your clipboard
+  pbpaste
+  echo
+}
+
+function cert-dates() {
+  DOMAIN=$1
+  echo | openssl s_client -connect ${DOMAIN}:443 -servername ${DOMAIN} 2>/dev/null | openssl x509 -noout -issuer -dates
+}
+

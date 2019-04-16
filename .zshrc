@@ -9,6 +9,10 @@ LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 
+if [[ "$TERM_PROGRAM" == 'iTerm.app' ]]; then
+    export ZSH_TMUX_AUTOSTART=true
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -137,12 +141,10 @@ source ~/.zsh/aliases.sh
 # added by travis gem
 [ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh
 source $HOME/.cargo/env
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # export PATH="$HOME/.yarn/bin:$PATH"
-source <(kubectl completion zsh)
-
 GPG_TTY=$(tty)
 export GPG_TTY
 
@@ -152,7 +154,7 @@ if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
     GPG_TTY=$(tty)
     export GPG_TTY
 else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+    eval $(gpg-agent --daemon)
 fi
 
 export PATH=$PATH:/usr/local/go/binexport GOPATH=$HOME/go
@@ -167,6 +169,8 @@ if [ -f '/Users/barrettharber/google-cloud-sdk/path.zsh.inc' ]; then source '/Us
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc'; fi
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+source <(kubectl completion zsh)
 
 
 export PATH="/usr/local/opt/openssl/bin:$PATH"
