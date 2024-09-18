@@ -5,12 +5,12 @@
 	trustctime = false
 [user]
 	email = barrett.harber@gmail.com
-	name = Barrett K. Harber
-	signingkey = A9F3019F
+	name = Barrett Harber
+	signingkey = 5309C58AAB0E2A4F
 [commit]
 	gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [filter "lfs"]
@@ -18,3 +18,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main
+[core]
+	excludesFile = ~/.gitignore
+[push]
+	autoSetupRemote = true

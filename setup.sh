@@ -3,10 +3,8 @@
 dotfiles=${0:A:h}
 
 files=(
-    '.alacritty.yml'
 	'.bash_profile'
-	'.cos'
-    '.gitconfig'
+	'.gitconfig'
 	'.gitignore_global'
 	'.tmux'
 	'.tmux.conf'
@@ -18,11 +16,26 @@ files=(
 )
 
 for file in $files; do
-	if [[ ! -h "$HOME/$file" ]]; then
-		echo "Creating symlink for $file"
-		ln -s "$dotfiles/$file" "$HOME/$file"
+	fp="$HOME/$file"
+	# -h file
+	# 	true if file exists and is a symbolic link.
+	if [[ ! -h ${fp} ]]; then
+		# -f file
+		# 	true if file exists and is a regular file.
+		# -d file
+		# 	true if file exists and is a directory.
+		if [[ -f ${fp} ]] || [[ -d ${fp} ]]; then
+			echo "Backing up ${file}"
+			mv ${fp} "${fp}.bak"
+		fi
+		echo "Creating symlink for ${file}"
+		ln -s "${dotfiles}/${file}" ${fp}
+	else
+		echo "Symlink already exists for ${file}"
 	fi
 done
+
+exit 0;
 
 GH_USERNAME="binoculars"
 PROJECTS_DIR=~/Projects

@@ -17,7 +17,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -69,8 +69,6 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	osx
-	bower
 	brew
 	aws
 	git-extras
@@ -79,7 +77,6 @@ plugins=(
 	gitignore
 	node
 	npm
-	nvm
 	python
 	pip
 	pep8
@@ -88,7 +85,6 @@ plugins=(
 	tmux
 	tmuxinator
 	docker
-	go
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -126,27 +122,24 @@ bindkey \^U backward-kill-line
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 export DEFAULT_USER=${USER}
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
 
 # Virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 export AUTOENV_ENV_FILENAME='.autoenv'
 #source /usr/local/bin/virtualenvwrapper.sh
-source /usr/local/opt/autoenv/activate.sh
+# source /usr/local/opt/autoenv/activate.sh
 
 source ~/.zsh/aliases.sh
 
-# added by travis gem
-[ -f /Users/barrettharber/.travis/travis.sh ] && source /Users/barrettharber/.travis/travis.sh
-source $HOME/.cargo/env
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# source $HOME/.cargo/env
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # export PATH="$HOME/.yarn/bin:$PATH"
-GPG_TTY=$(tty)
-export GPG_TTY
+export GPG_TTY=$(tty)
 
 if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
     source ~/.gnupg/.gpg-agent-info
@@ -163,14 +156,32 @@ export EDITOR='vim'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/barrettharber/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/barrettharber/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/barrettharber/google-cloud-sdk/completion.zsh.inc'; fi
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 source <(kubectl completion zsh)
 
 
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+#         . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# Created by `pipx` on 2023-12-13 21:30:09
+export PATH="$PATH:$HOME/.local/bin"
+source /opt/homebrew/opt/autoenv/activate.sh
+eval "$(oh-my-posh init zsh)"
+eval "$(op completion zsh)"; compdef _op op
